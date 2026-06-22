@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,10 +19,34 @@
             margin: 0;
             padding: 0;
         }
+        
+        /* Dil Değiştirme Butonu Tasarımı */
+        .lang-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--card-bg);
+            border: 1px solid #2a2a35;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: #fff;
+            transition: background 0.2s;
+        }
+        .lang-switcher:hover {
+            background: #2e2e3f;
+        }
+
         header {
             max-width: 800px;
-            margin: 80px auto 40px auto;
+            margin: 100px auto 40px auto;
             padding: 0 20px;
+            position: relative;
         }
         h1 { font-size: 2.5rem; margin-bottom: 10px; color: #fff; }
         .subtitle { font-size: 1.2rem; color: var(--accent-color); font-weight: bold; }
@@ -57,16 +81,33 @@
         .links a { color: var(--accent-color); text-decoration: none; margin-right: 20px; font-weight: 500; }
         .links a:hover { text-decoration: underline; }
         footer { text-align: center; padding: 25px 0; color: #71717a; font-size: 0.9rem; border-top: 1px solid var(--card-bg); margin-top: 80px; }
+
+        /* Dil Gizleme Sınıfları */
+        .lang-en, .lang-tr { display: none; }
+        .visible { display: block !important; }
+        span.visible { display: inline-block !important; }
     </style>
 </head>
 <body>
 
+    <!-- Dil Değiştirme Butonu (Sağ Üst Köşe) -->
+    <button class="lang-switcher" onclick="toggleLanguage()">
+        <span id="lang-icon">🇹🇷</span> <span id="lang-text">TR</span>
+    </button>
+
     <header>
         <h1>Faruk Utku Çalık</h1>
-        <div class="subtitle">Dijital Oyun Tasarımcısı & Bağımsız Oyun Geliştiricisi</div>
-        <p class="bio">
+        
+        <div class="subtitle lang-en visible">Digital Game Designer & Indie Game Developer</div>
+        <div class="subtitle lang-tr">Dijital Oyun Tasarımcısı & Bağımsız Oyun Geliştiricisi</div>
+        
+        <p class="bio lang-en visible">
+            Creating innovative mechanics and turning ideas into playable worlds using Unity and C#. I am a senior Digital Game Design student and the founder of NuttyCat Games, an independent game studio.
+        </p>
+        <p class="bio lang-tr">
             Unity ve C# kullanarak yenilikçi mekanikler üretiyor, fikirleri oynanabilir dünyalara dönüştürüyorum. Dijital Oyun Tasarımı son sınıf öğrencisiyim ve NuttyCat Games bağımsız oyun stüdyosunun kurucusuyum.
         </p>
+        
         <div class="links" style="margin-top: 20px;">
             <a href="https://www.linkedin.com/in/faruk-utku-calik-798a37222" target="_blank">LinkedIn</a>
             <a href="https://github.com/frkutku19" target="_blank">GitHub</a>
@@ -77,7 +118,9 @@
 
     <main>
         <section id="projects">
-            <h2>Öne Çıkan Projeler</h2>
+            <h2 class="lang-en visible">Featured Projects</h2>
+            <h2 class="lang-tr">Öne Cıkan Projeler</h2>
+            
             <div class="project-grid">
                 
                 <!-- PROJE 1: HEART DECAY -->
@@ -89,11 +132,14 @@
                         <span class="tag">Turn-Based RPG</span>
                         <span class="tag">NuttyCat Games</span>
                     </div>
-                    <p style="color: #a1a1aa;">
-                        Düşman turları sırasında aktif kontra atak yapmaya dayalı, dinamik savaş mekaniklerine ve 32-bit pixel art estetiğine sahip bağımsız RPG projesi. Oyunun mekanik kodlaması, UI sistemleri ve proje yönetimi tarafımdan yürütülmektedir.
+                    <p class="lang-en visible" style="color: #a1a1aa;">
+                        An independent RPG project featuring dynamic combat mechanics based on active counter-attacks during enemy turns, with a 32-bit pixel art aesthetic. I am responsible for gameplay programming, UI systems, and project management.
+                    </p>
+                    <p class="lang-tr" style="color: #a1a1aa;">
+                        Düsman turları sırasında aktif kontra atak yapmaya dayalı, dinamik savas mekaniklerine ve 32-bit pixel art estetigine sahip bagımsız RPG projesi. Oyunun mekanik kodlaması, UI sistemleri ve proje yönetimi tarafımdan yürütülmektedir.
                     </p>
                     <div class="btn-group">
-                        <a href="https://store.steampowered.com/app/4285080/Heart_Decay/" target="_blank" class="btn">Steam Sayfası</a>
+                        <a href="https://store.steampowered.com/app/4285080/Heart_Decay/" target="_blank" class="btn">Steam Page</a>
                     </div>
                 </div>
 
@@ -106,15 +152,19 @@
                         <span class="tag">Puzzle / Arcade</span>
                         <span class="tag">Free-to-Play</span>
                     </div>
-                    <p style="color: #a1a1aa;">
-                        Ekip olarak geliştirdiğimiz ve Steam üzerinde ücretsiz olarak yayınladığımız, bulmaca ve arcade dinamiklerine sahip ilk oyun projemiz. 
+                    <p class="lang-en visible" style="color: #a1a1aa;">
+                        Our team's first released game on Steam, featuring puzzle and arcade dynamics. Available for free.
+                    </p>
+                    <p class="lang-tr" style="color: #a1a1aa;">
+                        Ekip olarak gelistirdigimiz ve Steam üzerinde ücretsiz olarak yayınladıgımız, bulmaca ve arcade dinamiklerine sahip ilk oyun projemiz. 
                     </p>
                     <div class="btn-group">
-                        <a href="https://store.steampowered.com/app/2584700/Squaretrail_Lines_of_The_Frame/" target="_blank" class="btn">Steam'de Ücretsiz Oyna</a>
+                        <a href="https://store.steampowered.com/app/2584700/Squaretrail_Lines_of_The_Frame/" target="_blank" class="btn lang-en visible">Play on Steam</a>
+                        <a href="https://store.steampowered.com/app/2584700/Squaretrail_Lines_of_The_Frame/" target="_blank" class="btn lang-tr">Steam'de Ücretsiz Oyna</a>
                     </div>
                 </div>
 
-                <!-- PROJE 3: MEKANİK PROTOTİPLERİ -->
+                <!-- PROJE 3: MEKANIK PROTOTIPLER -->
                 <div class="project-card">
                     <div class="project-title">Gameplay Mechanics & Prototypes</div>
                     <div class="tags">
@@ -122,11 +172,15 @@
                         <span class="tag">C#</span>
                         <span class="tag">Gameplay Programming</span>
                     </div>
-                    <p style="color: #a1a1aa;">
-                        Geliştirdiğim çeşitli karakter kontrolcüleri, yapay zeka prototipleri ve UI navigasyon sistemlerinin kaynak kodlarını içeren teknik çalışmalarım.
+                    <p class="lang-en visible" style="color: #a1a1aa;">
+                        Technical source codes and projects including character controllers, AI prototypes, and UI navigation systems developed by me.
+                    </p>
+                    <p class="lang-tr" style="color: #a1a1aa;">
+                        Gelistirdigim çesitli karakter kontrolcüleri, yapay zeka prototipleri ve UI navigasyon sistemlerinin kaynak kodlarını içeren teknik çalısmalarım.
                     </p>
                     <div class="btn-group">
-                        <a href="https://github.com/frkutku19" target="_blank" class="btn">GitHub Kodlarını İncele</a>
+                        <a href="https://github.com/frkutku19" target="_blank" class="btn lang-en visible">View on GitHub</a>
+                        <a href="https://github.com/frkutku19" target="_blank" class="btn lang-tr">GitHub Kodlarını Incele</a>
                     </div>
                 </div>
 
@@ -134,18 +188,57 @@
         </section>
 
         <section id="about">
-            <h2>Eğitim & Yetenekler</h2>
-            <p><strong>Üniversite:</strong> Doğuş Üniversitesi - Dijital Oyun Tasarımı (4. Sınıf)</p>
-            <p><strong>Uzmanlık Alanları:</strong> Oynanış Programlama (Gameplay Programming), Turn-Based Sistem Tasarımı, UI Sistemleri, Proje Yönetimi ve Ekip Liderliği.</p>
+            <h2 class="lang-en visible">Education & Skills</h2>
+            <h2 class="lang-tr">Egitim & Yetenekler</h2>
+            
+            <div class="lang-en visible">
+                <p><strong>University:</strong> Doğuş University - Digital Game Design (4th Year)</p>
+                <p><strong>Specialties:</strong> Gameplay Programming, Turn-Based System Design, UI Systems, Project Management & Team Leadership.</p>
+            </div>
+            <div class="lang-tr">
+                <p><strong>Üniversite:</strong> Dogus Üniversitesi - Dijital Oyun Tasarımı (4. Sınıf)</p>
+                <p><strong>Uzmanlık Alanları:</strong> Oynanıs Programlama (Gameplay Programming), Turn-Based Sistem Tasarımı, UI Sistemleri, Proje Yönetimi ve Ekip Liderligi.</p>
+            </div>
+            
             <div class="btn-group">
-                <a href="cv.pdf" target="_blank" class="btn btn-secondary">CV'mi İndir (PDF)</a>
+                <a href="cv.pdf" target="_blank" class="btn btn-secondary lang-en visible">Download CV (PDF)</a>
+                <a href="cv.pdf" target="_blank" class="btn btn-secondary lang-tr">CV'mi Indir (PDF)</a>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 - utkucalik.tr. Tüm Hakları Saklıdır.</p>
+        <p class="lang-en visible">&copy; 2026 - utkucalik.tr. All Rights Reserved.</p>
+        <p class="lang-tr">&copy; 2026 - utkucalik.tr. Tüm Hakları Saklıdır.</p>
     </footer>
+
+    <!-- Dil Değiştirme Mantığını Yöneten JavaScript Kodu -->
+    <script>
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            const enElements = document.querySelectorAll('.lang-en');
+            const trElements = document.querySelectorAll('.lang-tr');
+            const icon = document.getElementById('lang-icon');
+            const text = document.getElementById('lang-text');
+
+            if (currentLang === 'en') {
+                // Türkçe'ye geç
+                enElements.forEach(el => el.classList.remove('visible'));
+                trElements.forEach(el => el.classList.add('visible'));
+                icon.innerText = '🇬🇧';
+                text.innerText = 'EN';
+                currentLang = 'tr';
+            } else {
+                // İngilizce'ye geç
+                trElements.forEach(el => el.classList.remove('visible'));
+                enElements.forEach(el => el.classList.add('visible'));
+                icon.innerText = '🇹🇷';
+                text.innerText = 'TR';
+                currentLang = 'en';
+            }
+        }
+    </script>
 
 </body>
 </html>

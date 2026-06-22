@@ -45,6 +45,7 @@
             color: #fff;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             transition: all 0.2s;
+            z-index: 10;
         }
         .lang-switcher:hover {
             background: #1e1e30;
@@ -53,15 +54,32 @@
 
         header {
             max-width: 800px;
-            margin: 100px auto 40px auto;
+            margin: 80px auto 40px auto;
             padding: 0 20px;
             position: relative;
         }
-        h1 { font-size: 2.8rem; margin-bottom: 5px; color: #fff; letter-spacing: -0.5px; }
+
+        /* Fotoğraf ve İsim Alanı Düzeni */
+        .header-container {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 15px;
+        }
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+        .header-text h1 { font-size: 2.6rem; margin: 0 0 5px 0; color: #fff; letter-spacing: -0.5px; }
+
         .subtitle { font-size: 1.25rem; color: var(--accent-color); font-weight: 600; }
         .bio { max-width: 630px; color: #94a3b8; margin-top: 20px; font-size: 1.05rem; }
         
-        /* Yenilenen Sosyal Medya İkon Alanı */
+        /* Sosyal Medya İkon Alanı */
         .social-links-container {
             display: flex;
             gap: 15px;
@@ -127,6 +145,17 @@
         .btn:hover { background: #4f46e5; }
         .btn-secondary { background: #232336; border: 1px solid #33334d; }
         .btn-secondary:hover { background: #2d2d44; }
+
+        /* Yeni Eğitim ve Yetenek Grubu Tasarımı */
+        .info-block {
+            margin-bottom: 20px;
+            background: var(--card-bg);
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: 1px solid #232336;
+        }
+        .info-block p { margin: 5px 0; }
+        .info-block i { color: var(--accent-color); margin-right: 10px; width: 20px; text-align: center; }
         
         footer { text-align: center; padding: 30px 0; color: #64748b; font-size: 0.9rem; border-top: 1px solid #232336; margin-top: 80px; }
 
@@ -134,6 +163,12 @@
         .visible { display: block !important; }
         span.visible { display: inline-block !important; }
         div.visible { display: flex !important; }
+        
+        /* Mobil Ekranlar İçin Düzenlemeler */
+        @media (max-width: 600px) {
+            .header-container { flex-direction: column; align-items: flex-start; gap: 15px; }
+            header { margin-top: 60px; }
+        }
     </style>
 </head>
 <body>
@@ -143,10 +178,15 @@
     </button>
 
     <header>
-        <h1>Faruk Utku Çalık</h1>
-        
-        <div class="subtitle lang-en visible">Digital Game Designer & Indie Game Developer</div>
-        <div class="subtitle lang-tr">Dijital Oyun Tasarımcısı & Bağımsız Oyun Geliştiricisi</div>
+        <!-- Fotoğraf ve İsim Alanı -->
+        <div class="header-container">
+            <img src="profil.jpg" alt="Faruk Utku Çalık" class="profile-img">
+            <div class="header-text">
+                <h1>Faruk Utku Çalık</h1>
+                <div class="subtitle lang-en visible">Digital Game Designer & Indie Game Developer</div>
+                <div class="subtitle lang-tr">Dijital Oyun Tasarımcısı & Bağımsız Oyun Geliştiricisi</div>
+            </div>
+        </div>
         
         <p class="bio lang-en visible">
             Creating innovative mechanics and turning ideas into playable worlds using Unity and C#. I am a senior Digital Game Design student and the founder of NuttyCat Games, an independent game studio.
@@ -155,7 +195,6 @@
             Unity ve C# kullanarak yenilikçi mekanikler üretiyor, fikirleri oynanabilir dünyalara dönüştürüyorum. Dijital Oyun Tasarımı son sınıf öğrencisiyim ve NuttyCat Games bağımsız oyun stüdyosunun kurucusuyum.
         </p>
         
-        <!-- İkonlu ve Kutulu Yeni Sosyal Medya Link Alanı -->
         <div class="social-links-container">
             <a href="https://www.linkedin.com/in/faruk-utku-calik-798a37222" target="_blank" class="social-box linkedin">
                 <i class="fab fa-linkedin"></i> LinkedIn
@@ -226,30 +265,6 @@
                     </div>
                 </div>
 
-                <!-- PROJE 3: MEKANİK PROTOTİPLER -->
-                <div class="project-card">
-                    <div class="project-title">Gameplay Mechanics & Prototypes</div>
-                    <div class="tags">
-                        <span class="tag">Unity</span>
-                        <span class="tag">C#</span>
-                        <span class="tag">Gameplay Programming</span>
-                    </div>
-                    <p class="lang-en visible" style="color: #94a3b8;">
-                        Technical source codes and projects including character controllers, AI prototypes, and UI navigation systems developed by me.
-                    </p>
-                    <p class="lang-tr" style="color: #94a3b8;">
-                        Geliştirdiğim çeşitli karakter kontrolcüleri, yapay zeka prototipleri ogre UI navigasyon sistemlerinin kaynak kodlarını içeren teknik çalışmalarım.
-                    </p>
-                    <div class="btn-group">
-                        <a href="https://github.com/frkutku19" target="_blank" class="btn lang-en visible">
-                            <i class="fab fa-github"></i> View on GitHub
-                        </a>
-                        <a href="https://github.com/frkutku19" target="_blank" class="btn lang-tr">
-                            <i class="fab fa-github"></i> GitHub Kodlarını İncele
-                        </a>
-                    </div>
-                </div>
-
             </div>
         </section>
 
@@ -257,16 +272,26 @@
             <h2 class="lang-en visible">Education & Skills</h2>
             <h2 class="lang-tr">Eğitim & Yetenekler</h2>
             
+            <!-- Net Bir Şekilde Ayrılan Blok Yapısı -->
             <div class="lang-en visible">
-                <p><strong>University:</strong> Doğuş University - Digital Game Design (4th Year)</p>
-                <p><strong>Specialties:</strong> Gameplay Programming, Turn-Based System Design, UI Systems, Project Management & Team Leadership.</p>
-            </div>
-            <div class="lang-tr">
-                <p><strong>Üniversite:</strong> Doğuş Üniversitesi - Dijital Oyun Tasarımı (4. Sınıf)</p>
-                <p><strong>Uzmanlık Alanları:</strong> Oynanış Programlama (Gameplay Programming), Turn-Based Sistem Tasarımı, UI Sistemleri, Proje Yönetimi ve Ekip Liderliği.</p>
+                <div class="info-block">
+                    <p><i class="fas fa-graduation-cap"></i> <strong>University:</strong> Doğuş University - Digital Game Design (4th Year)</p>
+                </div>
+                <div class="info-block">
+                    <p><i class="fas fa-code"></i> <strong>Specialties:</strong> Gameplay Programming, Turn-Based System Design, UI Systems, Project Management & Team Leadership.</p>
+                </div>
             </div>
             
-            <div class="btn-group">
+            <div class="lang-tr">
+                <div class="info-block">
+                    <p><i class="fas fa-graduation-cap"></i> <strong>Üniversite:</strong> Doğuş Üniversitesi - Dijital Oyun Tasarımı (4. Sınıf)</p>
+                </div>
+                <div class="info-block">
+                    <p><i class="fas fa-code"></i> <strong>Uzmanlık Alanları:</strong> Oynanış Programlama (Gameplay Programming), Turn-Based Sistem Tasarımı, UI Sistemleri, Proje Yönetimi ve Ekip Liderliği.</p>
+                </div>
+            </div>
+            
+            <div class="btn-group" style="margin-top: 25px;">
                 <a href="cv.pdf" target="_blank" class="btn btn-secondary lang-en visible">
                     <i class="fas fa-file-pdf"></i> Download CV (PDF)
                 </a>

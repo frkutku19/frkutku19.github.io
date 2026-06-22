@@ -4,42 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Faruk Utku Çalık | Game Developer</title>
+    <!-- İkonlar için FontAwesome Kütüphanesi -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #0f0f12;
+            --bg-color: #0d0d11;
             --text-color: #f0f0f5;
             --accent-color: #6366f1;
-            --card-bg: #1a1a24;
+            --card-bg: #151522;
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
+            /* Arka plana oyun/kod esintili hafif bir grid dokusu */
+            background-image: 
+                linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
             color: var(--text-color);
             line-height: 1.6;
             margin: 0;
             padding: 0;
         }
         
-        /* Dil Değiştirme Butonu Tasarımı */
+        /* Dil Değiştirme Butonu */
         .lang-switcher {
             position: absolute;
             top: 20px;
             right: 20px;
             background: var(--card-bg);
-            border: 1px solid #2a2a35;
-            padding: 8px 12px;
+            border: 1px solid #2a2a3f;
+            padding: 8px 14px;
             border-radius: 20px;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 8px;
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #fff;
-            transition: background 0.2s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.2s;
         }
         .lang-switcher:hover {
-            background: #2e2e3f;
+            background: #1e1e30;
+            border-color: var(--accent-color);
         }
 
         header {
@@ -48,49 +57,87 @@
             padding: 0 20px;
             position: relative;
         }
-        h1 { font-size: 2.5rem; margin-bottom: 10px; color: #fff; }
-        .subtitle { font-size: 1.2rem; color: var(--accent-color); font-weight: bold; }
-        .bio { max-width: 600px; color: #a1a1aa; margin-top: 20px; }
+        h1 { font-size: 2.8rem; margin-bottom: 5px; color: #fff; letter-spacing: -0.5px; }
+        .subtitle { font-size: 1.25rem; color: var(--accent-color); font-weight: 600; }
+        .bio { max-width: 630px; color: #94a3b8; margin-top: 20px; font-size: 1.05rem; }
         
+        /* Yenilenen Sosyal Medya İkon Alanı */
+        .social-links-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        .social-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--card-bg);
+            border: 1px solid #232336;
+            padding: 10px 18px;
+            border-radius: 8px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+        .social-box i { font-size: 1.2rem; }
+        
+        /* Marka Renkleri */
+        .social-box.linkedin:hover { border-color: #0077b5; background: rgba(0, 119, 181, 0.1); color: #0077b5; }
+        .social-box.github:hover { border-color: #24292e; background: rgba(255, 255, 255, 0.1); }
+        .social-box.itch:hover { border-color: #fa5c5c; background: rgba(250, 92, 92, 0.1); color: #fa5c5c; }
+        .social-box.email:hover { border-color: var(--accent-color); background: rgba(99, 102, 241, 0.1); color: var(--accent-color); }
+
         main { max-width: 800px; margin: 0 auto; padding: 0 20px; }
-        
         section { margin-bottom: 60px; }
-        h2 { font-size: 1.8rem; border-bottom: 2px solid var(--card-bg); padding-bottom: 10px; }
+        h2 { font-size: 1.8rem; border-bottom: 2px solid #232336; padding-bottom: 10px; color: #fff; }
         
         .project-grid { display: grid; grid-template-columns: 1fr; gap: 25px; margin-top: 20px; }
-        .project-card { background: var(--card-bg); border-radius: 8px; padding: 25px; border: 1px solid #2a2a35; }
-        .project-title { font-size: 1.4rem; font-weight: bold; color: #fff; margin: 0 0 10px 0; }
-        .tags { display: flex; gap: 10px; margin: 10px 0; flex-wrap: wrap; }
-        .tag { background: #2e2e3f; padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; color: #cbd5e1; }
+        .project-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            padding: 30px; 
+            border: 1px solid #232336;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .project-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+        .project-title { font-size: 1.5rem; font-weight: bold; color: #fff; margin: 0 0 10px 0; }
+        .tags { display: flex; gap: 8px; margin: 12px 0; flex-wrap: wrap; }
+        .tag { background: #1e1e30; padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; color: #cbd5e1; border: 1px solid #2d2d44; }
         
-        .btn-group { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+        .btn-group { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
         .btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             background: var(--accent-color);
             color: #fff;
-            padding: 10px 20px;
-            border-radius: 6px;
+            padding: 10px 22px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 500;
             transition: background 0.2s;
         }
         .btn:hover { background: #4f46e5; }
-        .btn-secondary { background: #2e2e3f; }
-        .btn-secondary:hover { background: #3b3b54; }
+        .btn-secondary { background: #232336; border: 1px solid #33334d; }
+        .btn-secondary:hover { background: #2d2d44; }
         
-        .links a { color: var(--accent-color); text-decoration: none; margin-right: 20px; font-weight: 500; }
-        .links a:hover { text-decoration: underline; }
-        footer { text-align: center; padding: 25px 0; color: #71717a; font-size: 0.9rem; border-top: 1px solid var(--card-bg); margin-top: 80px; }
+        footer { text-align: center; padding: 30px 0; color: #64748b; font-size: 0.9rem; border-top: 1px solid #232336; margin-top: 80px; }
 
-        /* Dil Gizleme Sınıfları */
         .lang-en, .lang-tr { display: none; }
         .visible { display: block !important; }
         span.visible { display: inline-block !important; }
+        div.visible { display: flex !important; }
     </style>
 </head>
 <body>
 
-    <!-- Dil Değiştirme Butonu (Sağ Üst Köşe) -->
     <button class="lang-switcher" onclick="toggleLanguage()">
         <span id="lang-icon">🇹🇷</span> <span id="lang-text">TR</span>
     </button>
@@ -108,18 +155,27 @@
             Unity ve C# kullanarak yenilikçi mekanikler üretiyor, fikirleri oynanabilir dünyalara dönüştürüyorum. Dijital Oyun Tasarımı son sınıf öğrencisiyim ve NuttyCat Games bağımsız oyun stüdyosunun kurucusuyum.
         </p>
         
-        <div class="links" style="margin-top: 20px;">
-            <a href="https://www.linkedin.com/in/faruk-utku-calik-798a37222" target="_blank">LinkedIn</a>
-            <a href="https://github.com/frkutku19" target="_blank">GitHub</a>
-            <a href="https://frkutku.itch.io/" target="_blank">Itch.io</a>
-            <a href="mailto:utkucalik25@gmail.com">E-posta</a>
+        <!-- İkonlu ve Kutulu Yeni Sosyal Medya Link Alanı -->
+        <div class="social-links-container">
+            <a href="https://www.linkedin.com/in/faruk-utku-calik-798a37222" target="_blank" class="social-box linkedin">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="https://github.com/frkutku19" target="_blank" class="social-box github">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://frkutku.itch.io/" target="_blank" class="social-box itch">
+                <i class="fab fa-italic"></i> Itch.io
+            </a>
+            <a href="mailto:utkucalik25@gmail.com" class="social-box email">
+                <i class="fas fa-envelope"></i> E-posta
+            </a>
         </div>
     </header>
 
     <main>
         <section id="projects">
             <h2 class="lang-en visible">Featured Projects</h2>
-            <h2 class="lang-tr">Öne Cıkan Projeler</h2>
+            <h2 class="lang-tr">Öne Çıkan Projeler</h2>
             
             <div class="project-grid">
                 
@@ -132,14 +188,16 @@
                         <span class="tag">Turn-Based RPG</span>
                         <span class="tag">NuttyCat Games</span>
                     </div>
-                    <p class="lang-en visible" style="color: #a1a1aa;">
+                    <p class="lang-en visible" style="color: #94a3b8;">
                         An independent RPG project featuring dynamic combat mechanics based on active counter-attacks during enemy turns, with a 32-bit pixel art aesthetic. I am responsible for gameplay programming, UI systems, and project management.
                     </p>
-                    <p class="lang-tr" style="color: #a1a1aa;">
-                        Düsman turları sırasında aktif kontra atak yapmaya dayalı, dinamik savas mekaniklerine ve 32-bit pixel art estetigine sahip bagımsız RPG projesi. Oyunun mekanik kodlaması, UI sistemleri ve proje yönetimi tarafımdan yürütülmektedir.
+                    <p class="lang-tr" style="color: #94a3b8;">
+                        Düşman turları sırasında aktif kontra atak yapmaya dayalı, dinamik savaş mekaniklerine ve 32-bit pixel art estetiğine sahip bağımsız RPG projesi. Oyunun mekanik kodlaması, UI sistemleri ve proje yönetimi tarafımdan yürütülmektedir.
                     </p>
                     <div class="btn-group">
-                        <a href="https://store.steampowered.com/app/4285080/Heart_Decay/" target="_blank" class="btn">Steam Page</a>
+                        <a href="https://store.steampowered.com/app/4285080/Heart_Decay/" target="_blank" class="btn">
+                            <i class="fab fa-steam"></i> Steam Page
+                        </a>
                     </div>
                 </div>
 
@@ -152,19 +210,23 @@
                         <span class="tag">Puzzle / Arcade</span>
                         <span class="tag">Free-to-Play</span>
                     </div>
-                    <p class="lang-en visible" style="color: #a1a1aa;">
+                    <p class="lang-en visible" style="color: #94a3b8;">
                         Our team's first released game on Steam, featuring puzzle and arcade dynamics. Available for free.
                     </p>
-                    <p class="lang-tr" style="color: #a1a1aa;">
-                        Ekip olarak gelistirdigimiz ve Steam üzerinde ücretsiz olarak yayınladıgımız, bulmaca ve arcade dinamiklerine sahip ilk oyun projemiz. 
+                    <p class="lang-tr" style="color: #94a3b8;">
+                        Ekip olarak geliştirdiğimiz ve Steam üzerinde ücretsiz olarak yayınladığımız, bulmaca ve arcade dinamiklerine sahip ilk oyun projemiz. 
                     </p>
                     <div class="btn-group">
-                        <a href="https://store.steampowered.com/app/2584700/Squaretrail_Lines_of_The_Frame/" target="_blank" class="btn lang-en visible">Play on Steam</a>
-                        <a href="https://store.steampowered.com/app/2584700/Squaretrail_Lines_of_The_Frame/" target="_blank" class="btn lang-tr">Steam'de Ücretsiz Oyna</a>
+                        <a href="https://store.steampowered.com/app/2584700/Squaretrail_Lines_of_The_Frame/" target="_blank" class="btn lang-en visible">
+                            <i class="fab fa-steam"></i> Play on Steam
+                        </a>
+                        <a href="https://store.steampowered.com/app/2584700/Squaretrail_Lines_of_The_Frame/" target="_blank" class="btn lang-tr">
+                            <i class="fab fa-steam"></i> Steam'de Ücretsiz Oyna
+                        </a>
                     </div>
                 </div>
 
-                <!-- PROJE 3: MEKANIK PROTOTIPLER -->
+                <!-- PROJE 3: MEKANİK PROTOTİPLER -->
                 <div class="project-card">
                     <div class="project-title">Gameplay Mechanics & Prototypes</div>
                     <div class="tags">
@@ -172,15 +234,19 @@
                         <span class="tag">C#</span>
                         <span class="tag">Gameplay Programming</span>
                     </div>
-                    <p class="lang-en visible" style="color: #a1a1aa;">
+                    <p class="lang-en visible" style="color: #94a3b8;">
                         Technical source codes and projects including character controllers, AI prototypes, and UI navigation systems developed by me.
                     </p>
-                    <p class="lang-tr" style="color: #a1a1aa;">
-                        Gelistirdigim çesitli karakter kontrolcüleri, yapay zeka prototipleri ve UI navigasyon sistemlerinin kaynak kodlarını içeren teknik çalısmalarım.
+                    <p class="lang-tr" style="color: #94a3b8;">
+                        Geliştirdiğim çeşitli karakter kontrolcüleri, yapay zeka prototipleri ogre UI navigasyon sistemlerinin kaynak kodlarını içeren teknik çalışmalarım.
                     </p>
                     <div class="btn-group">
-                        <a href="https://github.com/frkutku19" target="_blank" class="btn lang-en visible">View on GitHub</a>
-                        <a href="https://github.com/frkutku19" target="_blank" class="btn lang-tr">GitHub Kodlarını Incele</a>
+                        <a href="https://github.com/frkutku19" target="_blank" class="btn lang-en visible">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                        <a href="https://github.com/frkutku19" target="_blank" class="btn lang-tr">
+                            <i class="fab fa-github"></i> GitHub Kodlarını İncele
+                        </a>
                     </div>
                 </div>
 
@@ -189,20 +255,24 @@
 
         <section id="about">
             <h2 class="lang-en visible">Education & Skills</h2>
-            <h2 class="lang-tr">Egitim & Yetenekler</h2>
+            <h2 class="lang-tr">Eğitim & Yetenekler</h2>
             
             <div class="lang-en visible">
                 <p><strong>University:</strong> Doğuş University - Digital Game Design (4th Year)</p>
                 <p><strong>Specialties:</strong> Gameplay Programming, Turn-Based System Design, UI Systems, Project Management & Team Leadership.</p>
             </div>
             <div class="lang-tr">
-                <p><strong>Üniversite:</strong> Dogus Üniversitesi - Dijital Oyun Tasarımı (4. Sınıf)</p>
-                <p><strong>Uzmanlık Alanları:</strong> Oynanıs Programlama (Gameplay Programming), Turn-Based Sistem Tasarımı, UI Sistemleri, Proje Yönetimi ve Ekip Liderligi.</p>
+                <p><strong>Üniversite:</strong> Doğuş Üniversitesi - Dijital Oyun Tasarımı (4. Sınıf)</p>
+                <p><strong>Uzmanlık Alanları:</strong> Oynanış Programlama (Gameplay Programming), Turn-Based Sistem Tasarımı, UI Sistemleri, Proje Yönetimi ve Ekip Liderliği.</p>
             </div>
             
             <div class="btn-group">
-                <a href="cv.pdf" target="_blank" class="btn btn-secondary lang-en visible">Download CV (PDF)</a>
-                <a href="cv.pdf" target="_blank" class="btn btn-secondary lang-tr">CV'mi Indir (PDF)</a>
+                <a href="cv.pdf" target="_blank" class="btn btn-secondary lang-en visible">
+                    <i class="fas fa-file-pdf"></i> Download CV (PDF)
+                </a>
+                <a href="cv.pdf" target="_blank" class="btn btn-secondary lang-tr">
+                    <i class="fas fa-file-pdf"></i> CV'mi İndir (PDF)
+                </a>
             </div>
         </section>
     </main>
@@ -212,7 +282,6 @@
         <p class="lang-tr">&copy; 2026 - utkucalik.tr. Tüm Hakları Saklıdır.</p>
     </footer>
 
-    <!-- Dil Değiştirme Mantığını Yöneten JavaScript Kodu -->
     <script>
         let currentLang = 'en';
 
@@ -223,14 +292,12 @@
             const text = document.getElementById('lang-text');
 
             if (currentLang === 'en') {
-                // Türkçe'ye geç
                 enElements.forEach(el => el.classList.remove('visible'));
                 trElements.forEach(el => el.classList.add('visible'));
                 icon.innerText = '🇬🇧';
                 text.innerText = 'EN';
                 currentLang = 'tr';
             } else {
-                // İngilizce'ye geç
                 trElements.forEach(el => el.classList.remove('visible'));
                 enElements.forEach(el => el.classList.add('visible'));
                 icon.innerText = '🇹🇷';
